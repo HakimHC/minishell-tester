@@ -15,10 +15,11 @@ END='\033[0m'
 OK="${GREEN} OK ${END}"
 KO="${RED} KO ${END}"
 
+prompt="minishell"
 
 function test_stdout {
 	echo $1 | bash > bashtmp 2>&1
-	echo $1 | "$ms" 2>&1 | grep -v minishell > mstmp
+	echo $1 | "$ms" 2>&1 | grep -v $prompt > mstmp
 	
 	echo -n "test $n: " 
 	diff -q bashtmp mstmp > /dev/null 2>&1
